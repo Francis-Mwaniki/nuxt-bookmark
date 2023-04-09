@@ -4,9 +4,9 @@
   </div>
 </template>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 
 * {
-  font-family: "Space Mono", monospace;
+  font-family: "Quicksand", sans-serif;
 }
 </style>

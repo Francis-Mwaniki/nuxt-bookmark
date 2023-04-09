@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "nuxt-swiper": "latest",
     "nuxt": "^3.3.3"
   },
   "dependencies": {
