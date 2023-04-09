@@ -10,7 +10,7 @@
     "
   >
     <div
-      class="bg-gradient-to-tl from-black via-indigo-700 to-black p-8 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4"
+      class="bg-gradient-to-tl from-black via-[#01397A] to-black p-8 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4"
     >
       <h2 class="text-xl text-gray-100 mb-4">{{ isSignup ? "Sign up" : "Log in" }}</h2>
       <form>

@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
     <div
-      class="bg-gradient-to-tr from-black via-indigo-700 hover:via-indigo-900 hover:to-black hover:transform hover:duration-300 to-black text-white py-4"
+      class="bg-gradient-to-tr from-black via-[#01397A] hover:via-indigo-900 hover:to-black hover:transform hover:duration-300 to-black text-white py-4"
     >
       <!-- The best bookmark site in the world -->
       <h1 class="text-4xl font-bold text-center text-blue-100 nav-font">
@@ -40,12 +40,6 @@
         </div>
       </div>
     </div>
-    <!-- developed by francis -->
-    <footer class="bg-gradient-to-r from-black via-blue-900 border-none to-black py-4">
-      <div class="container mx-auto text-white text-center nav-font">
-        <p class="nav-font">&copy; Francis 2023 &trade;</p>
-      </div>
-    </footer>
   </div>
 </template>
 
