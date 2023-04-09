@@ -20,7 +20,7 @@
             <Icon name="ic:sharp-home" class="h-10 w-10" />
             Home</nuxt-link
           >
-          <nuxt-link class="nav-font cursor-pointer text-white text-xl">
+          <nuxt-link class="nav-font cursor-pointer text-white text-xl" to="Bookmarks">
             <Icon name="ic:round-bookmark" class="h-10 w-10" />
             Bookmarks</nuxt-link
           >
@@ -31,9 +31,11 @@
           >
           <!-- get started button -->
           <nuxt-link
+            to="Accounts"
             class="nav-font bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white"
           >
             Get Started
+            <Icon name="ic:sharp-trending-flat" class="h-10 w-10" />
           </nuxt-link>
         </div>
       </div>
