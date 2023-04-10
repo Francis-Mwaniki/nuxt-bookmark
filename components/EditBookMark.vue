@@ -3,7 +3,7 @@
     <div
       class="flex flex-col items-center sm:max-w-lg max-w-full rounded py-5 mx-auto px-2"
     >
-      <h1 class="text-2xl font-bold text-gray-700 mb-4">Create Bookmark</h1>
+      <h1 class="text-2xl font-bold text-gray-700 mb-4">Update Bookmark</h1>
       <form class="w-full max-w-lg" @submit.prevent="createBookmark">
         <div class="flex flex-wrap mb-6">
           <div class="w-full mb-3">
@@ -46,7 +46,7 @@
             to="NewBookMark"
             class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
           >
-            Create Bookmark
+            Update Bookmark
             <Icon name="ic:round-bookmark-add" class="h-10 w-10" />
           </nuxt-link>
         </div>
