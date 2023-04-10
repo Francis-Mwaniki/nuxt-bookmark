@@ -4,13 +4,17 @@
       <ul class="flex justify-between flex-wrap p-2 md:gap-1 gap-3">
         <li
           class="nav-item"
-          :class="{ active: current === 'home' }"
+          :class="{ active: current === 'home' ? 'text-pink-600' : '' }"
           @click="current = 'home'"
         >
           <nuxt-link to="/">
             <div class="flex items-center">
               <Icon name="ic:round-home" class="h-6 w-6 mr-2 text-gray-100" />
-              <span class="text-gray-100">Home</span>
+              <span
+                class="text-gray-100"
+                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                >Home</span
+              >
             </div>
           </nuxt-link>
         </li>
@@ -22,7 +26,11 @@
           <nuxt-link to="/Contact">
             <div class="flex items-center">
               <Icon name="ic:round-contacts" class="h-6 w-6 mr-2 text-gray-100" />
-              <span class="text-gray-100">Contact</span>
+              <span
+                class="text-gray-100"
+                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                >Contact</span
+              >
             </div>
           </nuxt-link>
         </li>
@@ -34,7 +42,11 @@
           <Nuxt-Link to="Bookmarks">
             <div class="flex items-center">
               <Icon name="ic:round-bookmark" class="h-6 w-6 mr-2 text-gray-100" />
-              <span class="text-gray-100">Bookmark</span>
+              <span
+                class="text-gray-100"
+                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                >Bookmark</span
+              >
             </div>
           </Nuxt-Link>
         </li>
