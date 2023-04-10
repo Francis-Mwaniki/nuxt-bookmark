@@ -1,23 +1,52 @@
 <template>
   <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-black">
     <div class="container mx-auto px-4 py-3 bg-[#01397A]">
+      <div class="flex justify-end">
+        <Profile :showProfile="showProfile" />
+      </div>
       <div class="flex justify-around items-center flex-row">
         <h1 class="text-3xl font-bold mb-4 text-white">Easily Manage your Bookmarks</h1>
         <!-- create bookmark button -->
-        <nuxt-link
-          to="NewBookMark"
-          class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
-        >
-          Create Bookmark
-          <Icon name="ic:sharp-trending-flat" class="h-10 w-10" />
-        </nuxt-link>
+        <div>
+          <!-- create bookmark button -->
+          <div class="flex justify-center">
+            <button
+              @click="
+                showModal = true;
+                isCreate = true;
+                isEdit = false;
+              "
+              class="bg-yellow-600 text-white md:text-xl text-xs px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
+            >
+              Create Bookmark
+              <Icon name="ic:round-bookmark-add" class="sm:h-10 h-7 w-7 sm:w-10" />
+            </button>
+          </div>
+
+          <Modal v-if="showModal" @close="showModal = false" isCreate="isCreate" />
+          <EditModal
+            v-if="showEditModal"
+            @close="showEditModal = false"
+            isEdit="isEdit"
+          />
+
+          <Delete v-if="showDeleteModal" @close="showDeleteModal = false" />
+        </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="bookmark in bookmarks"
           :key="bookmark.url"
-          class="bg-white rounded-lg shadow-md"
+          class="bg-white rounded-lg shadow-md relative"
         >
+          <!-- edit button -->
+          <button
+            class="absolute top-0 left-0 p-2 text-gray-500 hover:text-gray-800"
+            title="Edit Bookmark"
+            @click="Editing"
+          >
+            <Icon name="ic:round-edit" class="h-5 w-5" />
+          </button>
           <div class="p-4 flex items-center">
             <div
               class="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center mr-4"
@@ -31,13 +60,13 @@
               <p class="text-sm text-gray-600">{{ bookmark.description }}</p>
             </div>
             <!-- delete button -->
-            <nuxt-link
-              to="NewBookMark"
+            <button
+              @click="showDeleteModal = true"
               class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
             >
               delete
-              <Icon name="ic:sharp-delete-sweep" class="h-10 w-10" />
-            </nuxt-link>
+              <Icon name="ic:sharp-delete-sweep" class="h-7 w-7" />
+            </button>
           </div>
         </div>
       </div>
@@ -81,7 +110,20 @@ export default {
           description: "Streaming service",
         },
       ],
+      showModal: false,
+      showDeleteModal: false,
+      isCreate: true,
+      showEditModal: false,
+      isEdit: true,
+      showProfile: false,
     };
+  },
+  methods: {
+    Editing() {
+      this.isEdit = true;
+      this.showEditModal = true;
+      this.isCreate = false;
+    },
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center items-center h-screen"
+    class="flex justify-center items-center h-screen sm:px-1 px-4"
     style="
       background-image: url('https://image.lexica.art/full_jpg/7a3f3131-79e1-4cda-a66b-c6e668469404');
       background-repeat: no-repeat;
