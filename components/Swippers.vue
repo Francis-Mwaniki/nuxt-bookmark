@@ -60,11 +60,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center mx-auto gap-y-4">
-    <h1 class="text-4xl font-bold text-center text-blue-100 nav-font">
-      What customers are saying about BookMark&trade;
-    </h1>
-
+  <div class="flex flex-col justify-center items-center mx-auto gap-y-7">
     <Swiper
       class="swiper-cards"
       :width="240"
