@@ -37,7 +37,7 @@
         <div
           v-for="bookmark in bookmarks"
           :key="bookmark.url"
-          class="bg-white rounded-lg shadow-md relative"
+          class="bg-white rounded-lg shadow-md relative hover:ring-2 hover:ring-yellow-600 hover:shadow-lg hover:shadow-black"
         >
           <!-- edit button -->
           <button
@@ -57,7 +57,11 @@
               <a :href="bookmark.url" class="text-blue-500 hover:underline">{{
                 bookmark.title
               }}</a>
-              <p class="text-sm text-gray-600">{{ bookmark.description }}</p>
+              <p class="text-sm text-gray-600">
+                <a :href="bookmark.url" class="hover:underline hover:text-blue-700">
+                  {{ bookmark.description.slice(0, 12) + ".." }}</a
+                >
+              </p>
             </div>
             <!-- delete button -->
             <button
