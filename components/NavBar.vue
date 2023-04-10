@@ -9,10 +9,17 @@
         >
           <nuxt-link to="/">
             <div class="flex items-center">
-              <Icon name="ic:round-home" class="h-6 w-6 mr-2 text-gray-100" />
+              <Icon
+                name="ic:round-home"
+                class="h-6 w-6 mr-2 text-gray-100 hover:text-yellow-700 hover:translate-2 hover:duration-300 hover:ease-in-out"
+              />
               <span
                 class="text-gray-100"
-                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                :class="
+                  current
+                    ? 'hover:border-yellow-700 hover:border-b-2 hover:translate-2 hover:duration-300  hover:ease-in-out'
+                    : ''
+                "
                 >Home</span
               >
             </div>
@@ -25,10 +32,17 @@
         >
           <nuxt-link to="/Contact">
             <div class="flex items-center">
-              <Icon name="ic:round-contacts" class="h-6 w-6 mr-2 text-gray-100" />
+              <Icon
+                name="ic:round-contacts"
+                class="h-6 w-6 mr-2 text-gray-100 hover:text-yellow-700 hover:translate-2 hover:duration-300 hover:ease-in-out"
+              />
               <span
                 class="text-gray-100"
-                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                :class="
+                  current
+                    ? 'hover:border-yellow-700 hover:border-b-2 hover:translate-2 hover:duration-300  hover:ease-in-out'
+                    : ''
+                "
                 >Contact</span
               >
             </div>
@@ -41,10 +55,17 @@
         >
           <Nuxt-Link to="Bookmarks">
             <div class="flex items-center">
-              <Icon name="ic:round-bookmark" class="h-6 w-6 mr-2 text-gray-100" />
+              <Icon
+                name="ic:round-bookmark"
+                class="h-6 w-6 mr-2 text-gray-100 hover:text-yellow-700 hover:translate-2 hover:duration-300 hover:ease-in-out"
+              />
               <span
                 class="text-gray-100"
-                :class="current ? 'border-yellow-700 border-b-4' : ''"
+                :class="
+                  current
+                    ? 'hover:border-yellow-700 hover:border-b-2 hover:translate-2 hover:duration-300  hover:ease-in-out'
+                    : ''
+                "
                 >Bookmark</span
               >
             </div>

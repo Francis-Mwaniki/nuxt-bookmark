@@ -27,24 +27,24 @@
         <p class="nav-font">&copy; Francis 2023 &trade; &copy; Copyrights</p>
         <div class="flex justify-center items-center mx-auto gap-x-2 py-1">
           <a
-            href=""
-            class="text-white list-none no-underline"
+            href="https://github.com/Francis-Mwaniki"
+            class="text-white list-none no-underline hover:ring-black hover:ring-2 hover:bg-black hover:translate-2 hover:duration-300 p-2 rounded-full first-letter:00 hover:ease-in-out"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon name="uil:github" class="h-7 w-7" />
           </a>
           <a
-            href=""
-            class="text-white list-none no-underline"
+            href="https://twitter.com/FRANCIS90776084/status/1613471306418102274"
+            class="text-white list-none no-underline hover:ring-black hover:ring-2 hover:bg-black hover:translate-2 hover:duration-300 p-2 rounded-full first-letter: hover:ease-in-out"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon name="uil:twitter" class="h-7 w-7" />
           </a>
           <a
-            href=""
-            class="text-white list-none no-underline"
+            href="https://www.linkedin.com/in/francis-mwaniki-378603220/"
+            class="text-white list-none no-underline hover:ring-black hover:ring-2 hover:bg-black hover:translate-2 hover:duration-300 p-2 rounded-full first-letter:hover:ease-in-out"
             target="_blank"
             rel="noopener noreferrer"
           >
