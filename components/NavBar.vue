@@ -71,9 +71,9 @@
             </div>
           </Nuxt-Link>
         </li>
-        <div class="">
+        <div class="sm:mt-1 mt-7">
           <NuxtLink
-            class="px-4 py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md shadow-md transition-colors duration-300"
+            class="px-4 py-5 md:py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md shadow-md transition-colors duration-300"
             to="/Accounts"
           >
             <Icon name="ic:round-play-arrow" class="h-6 w-6 mr-2" />
