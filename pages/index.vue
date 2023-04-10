@@ -1,7 +1,12 @@
 <template>
-  <div><Main /></div>
+  <div>
+    <mainPage />
+    <Home />
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Home from "./Home.vue";
+</script>
 
 <style scoped></style>
