@@ -1,6 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-[#01397A]">
-    <div class="container mx-auto px-4 py-3 bg-[#01397A]">
+  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-black">
+    <div
+      class="container mx-auto px-4 py-3 bg-gradient-to-tr from-black via-[#01397A] to-black"
+    >
       <div class="flex justify-end">
         <Profile :showProfile="showProfile" />
       </div>
@@ -28,6 +30,13 @@
             v-if="showEditModal"
             @close="showEditModal = false"
             isEdit="isEdit"
+          />
+          <LoadBookMarks
+            v-if="showLoadModal"
+            @close="showLoadModal = false"
+            :moreBookmarks="moreBookmarks"
+            :showDeleteModal="showDeleteModal"
+            :showEditModal="showEditModal"
           />
 
           <Delete v-if="showDeleteModal" @close="showDeleteModal = false" />
@@ -74,6 +83,18 @@
           </div>
         </div>
       </div>
+      <div class="flex justify-center mx-auto items-center mt-3">
+        <button
+          @click="showLoadModal = true"
+          class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
+        >
+          Load more
+          <Icon name="ic:round-bookmarks" class="h-8 rounded-full ring-1 w-8" />
+        </button>
+      </div>
+      <div class="mt-8">
+        <RecentActivty />
+      </div>
     </div>
   </div>
 </template>
@@ -114,11 +135,67 @@ export default {
           description: "Streaming service",
         },
       ],
+      moreBookmarks: [
+        {
+          title: "Vue.js Documentation",
+          description: "The official documentation for Vue.js",
+          url: "https://vuejs.org/v2/guide/",
+        },
+        {
+          title: "Tailwind CSS",
+          description: "A utility-first CSS framework",
+          url: "https://tailwindcss.com/",
+        },
+        {
+          title: "GitHub",
+          description: "A web-based hosting service for version control",
+          url: "https://github.com/",
+        },
+        {
+          title: "Stack Overflow",
+          description: "A question and answer community for programmers",
+          url: "https://stackoverflow.com/",
+        },
+        {
+          title: "MDN Web Docs",
+          description: "Mozilla's documentation for web technologies",
+          url: "https://developer.mozilla.org/en-US/",
+        },
+        {
+          title: "CSS Tricks",
+          description: "A website about web development",
+          url: "https://css-tricks.com/",
+        },
+        {
+          title: "Google Developers",
+          description: "Resources for developers, by developers",
+          url: "https://developers.google.com/",
+        },
+        {
+          title: "W3Schools",
+          description: "Web development tutorials",
+          url: "https://www.w3schools.com/",
+        },
+        {
+          title: "Netlify",
+          description:
+            "A cloud computing company that offers hosting and serverless backend services",
+          url: "https://www.netlify.com/",
+        },
+        {
+          title: "FreeCodeCamp",
+          description:
+            "A non-profit organization that consists of an interactive learning web platform",
+          url: "https://www.freecodecamp.org/",
+        },
+      ],
+
       showModal: false,
       showDeleteModal: false,
       isCreate: true,
       showEditModal: false,
       isEdit: true,
+      showLoadModal: false,
       showProfile: false,
     };
   },

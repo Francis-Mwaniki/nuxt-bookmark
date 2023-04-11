@@ -13,7 +13,7 @@
       <div class="flex justify-end">
         <button
           @click="closeModal"
-          class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+          class="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
         >
           Close
         </button>
