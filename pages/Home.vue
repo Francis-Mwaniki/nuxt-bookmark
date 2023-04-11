@@ -97,6 +97,4 @@
 
 <script setup lang="ts"></script>
 
-<style scoped>
-/* home */
-</style>
+<style scoped></style>
