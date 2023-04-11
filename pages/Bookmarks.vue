@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-black">
+  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-[#01397A]">
     <div class="container mx-auto px-4 py-3 bg-[#01397A]">
       <div class="flex justify-end">
         <Profile :showProfile="showProfile" />

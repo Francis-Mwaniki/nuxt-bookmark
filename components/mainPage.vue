@@ -4,8 +4,8 @@
       class="bg-gradient-to-tr from-black via-[#01397A] hover:via-indigo-900 hover:to-black hover:transform hover:duration-300 to-black text-white py-4"
     >
       <!-- The best bookmark site in the world -->
-      <h1 class="text-4xl font-bold text-center text-blue-100 nav-font">
-        The Best Bookmark Site in the World&trade;
+      <h1 class="text-4xl font-bold text-center text-blue-100 nav-font mt-5">
+        KORASRY Your Best Bookmark Manager in the World.
       </h1>
 
       <div class="flex justify-around items-center flex-row">

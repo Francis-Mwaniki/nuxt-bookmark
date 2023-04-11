@@ -1,4 +1,5 @@
 <template>
+  <Banner />
   <div class="flex flex-col justify-center items-center bg-[#01397A] p-1">
     <nav class="w-full lg:w-1/2 p-4 rounded-lg">
       <ul class="flex justify-between flex-wrap p-2 md:gap-1 gap-3">

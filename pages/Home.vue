@@ -15,13 +15,17 @@
     </svg>
     <div class="">
       <h1 class="text-4xl font-bold text-center text-gray-800 nav-font my-2">
-        The BookMark&trade;
+        The KORASRY&trade;
       </h1>
       <div
         class="flex md:flex-row flex-col justify-center items-center mx-auto max-w-5xl space-y-3 gap-3 my-4"
       >
         <div class="max-w-3xl">
-          <img src="@/assets/img/bks2.png" alt="Image" class="" />
+          <img
+            src="https://www.e2msolutions.com/wp-content/uploads/2022/06/oxygen-builder-development.png"
+            alt="Image"
+            class=""
+          />
         </div>
         <div class="max-w-xl p-4">
           <h2 class="text-3xl text-black font-bold mb-4">
@@ -50,16 +54,44 @@
           </p>
         </div>
         <div class="max-w-3xl">
-          <img src="@/assets/img/bk.png" alt="Image" class="" />
+          <img
+            src="https://lh3.googleusercontent.com/FCTJV2u4ETqtkvFn0I1fY184UbdpWhqpAyyV6w7732ookhFnbAF_gBaWMNfAw28z_GhVeZmQIY7jbUuDlFEjWWv6ldLe7FvrJg4=w500"
+            alt="Image"
+            class=""
+          />
         </div>
       </div>
       <h1 class="text-4xl font-bold text-center text-blue-800 nav-font">
-        What customers are saying about BookMark&trade;
+        What customers are saying about KORASRY&trade;
       </h1>
       <div class="md:pl-1 sm:pl-32 pl-20 mx-auto">
         <Swippers />
       </div>
     </div>
+    <!-- Container -->
+    <div class="bg-blue-900 mx-auto rounded-lg max-w-6xl my-6">
+      <div class="container mx-auto px-4 py-8 flex flex-wrap items-center">
+        <div class="lg:w-1/2">
+          <img class="w-full h-auto" src="@/assets/img/new.png" alt="Image" />
+        </div>
+        <div class="lg:w-1/2 pl-10">
+          <h2 class="text-3xl text-white font-bold mb-4">KORASRY&trade;</h2>
+          <p class="text-lg text-gray-100 leading-relaxed mb-6">
+            The KORASRY&trade; is a bookmark site that provides a comprehensive collection
+            of bookmarks on various topics to help you save time and stay organized.
+            Whether you're looking for the latest news, shopping deals, or educational
+            resources, we've got you covered.
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-white py-2 px-4 text-blue-900 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
+            >Read More</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- end -->
   </div>
 </template>
 
