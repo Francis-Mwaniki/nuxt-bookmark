@@ -1,13 +1,6 @@
 <template>
   <div
-    class="flex justify-center items-center h-screen sm:px-1 px-4"
-    style="
-      background-image: url('https://image.lexica.art/full_jpg/7a3f3131-79e1-4cda-a66b-c6e668469404');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    "
+    class="flex justify-center items-center h-screen sm:px-1 px-4 bg-gradient-to-br from-black via-[#01397A] to-black"
   >
     <div
       class="bg-gradient-to-tl from-black via-[#01397A] to-black p-8 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4"
@@ -47,6 +40,16 @@
           {{ isSignup ? "Log in" : "Sign up" }}
         </a>
       </p>
+      <!-- or continue with github icon button -->
+      <div class="flex justify-center mt-4">
+        <a
+          href="#"
+          class="bg-yellow-800 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          <Icon name="uil:github" class="h-6 w-6" />
+          <span class="ml-2">Continue with Github</span>
+        </a>
+      </div>
     </div>
   </div>
 </template>
