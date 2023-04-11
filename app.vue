@@ -4,6 +4,7 @@
       <NavBar />
       <NuxtPage />
     </div>
+    <SlowFooter />
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -18,13 +19,14 @@
       ></path>
     </svg>
     <!-- developed by francis -->
+
     <footer
       class="bg-gradient-to-r from-black via-[#01397A] border-none to-[#01397A] py-4 relative"
     >
       <div
         class="container mx-auto text-white text-center nav-font flex flex-row justify-around items-center"
       >
-        <p class="nav-font">&copy; Francis 2023 &trade; &copy; Copyrights</p>
+        <p class="nav-font">KORASRY&trade; 2023 &copy; Copyrights</p>
         <div class="flex justify-center items-center mx-auto gap-x-2 py-1">
           <a
             href="https://github.com/Francis-Mwaniki"
