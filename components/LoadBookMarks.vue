@@ -8,6 +8,7 @@
       :showDeleteModal="showDeleteModal"
     />
     <EditModal v-if="showEditModal" @close="showEditModal = false" isEdit="isEdit" />
+    <Loading v-if="loading" class="" />
     <div
       class="bg-white sm:w-3/4 p-6 w-full rounded-lg shadow-lg transform transition-all duration-1000 ease-in-out sm:overflow-auto sm:mt-20 max-h-screen"
       style="overflow-y: auto"
@@ -75,6 +76,10 @@ export default {
       required: true,
     },
     showEditModal: {
+      type: Boolean,
+      required: true,
+    },
+    loading: {
       type: Boolean,
       required: true,
     },

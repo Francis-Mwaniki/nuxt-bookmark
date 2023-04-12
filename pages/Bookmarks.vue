@@ -26,6 +26,9 @@
           </div>
 
           <Modal v-if="showModal" @close="showModal = false" isCreate="isCreate" />
+          <!-- loader -->
+
+          <!-- end -->
           <EditModal
             v-if="showEditModal"
             @close="showEditModal = false"
@@ -37,6 +40,7 @@
             :moreBookmarks="moreBookmarks"
             :showDeleteModal="showDeleteModal"
             :showEditModal="showEditModal"
+            :loading="loading"
           />
 
           <Delete v-if="showDeleteModal" @close="showDeleteModal = false" />
@@ -85,11 +89,11 @@
       </div>
       <div class="flex justify-center mx-auto items-center mt-3">
         <button
-          @click="showLoadModal = true"
+          @click="load"
           class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
         >
           Load more
-          <Icon name="ic:round-bookmarks" class="h-8 rounded-full ring-1 w-8" />
+          <Icon name="ic:round-bookmarks" class="h-8 rounded-full w-8" />
         </button>
       </div>
       <div class="mt-8">
@@ -197,6 +201,7 @@ export default {
       isEdit: true,
       showLoadModal: false,
       showProfile: false,
+      loading: false,
     };
   },
   methods: {
@@ -204,6 +209,13 @@ export default {
       this.isEdit = true;
       this.showEditModal = true;
       this.isCreate = false;
+    },
+    load() {
+      this.showLoadModal = true;
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 5000);
     },
   },
 };
