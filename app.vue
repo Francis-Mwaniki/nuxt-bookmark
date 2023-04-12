@@ -58,9 +58,10 @@
   </div>
 </template>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand:wght@600&display=swap");
 
 * {
+  font-family: "Poppins", sans-serif;
   font-family: "Quicksand", sans-serif;
 }
 </style>

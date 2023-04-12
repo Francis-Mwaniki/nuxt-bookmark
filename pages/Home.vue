@@ -64,7 +64,7 @@
       <h1 class="text-4xl font-bold text-center text-blue-800 nav-font">
         What customers are saying about KORASRY&trade;
       </h1>
-      <div class="md:pl-1 sm:pl-32 pl-20 mx-auto">
+      <div class="mx-auto">
         <Swippers />
       </div>
     </div>

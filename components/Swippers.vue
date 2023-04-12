@@ -1,159 +1,76 @@
+<template>
+  <div class="container mx-auto px-4 py-8 lg:py-12">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2 justify-center">
+      <div v-for="(testimonial, index) in testimonials" :key="index" class="relative">
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transition-colors duration-500"
+        >
+          <div class="p-4">
+            <p class="text-gray-600">{{ testimonial.content }}</p>
+          </div>
+          <div
+            class="px-4 py-2 bg-[#01397A] text-sm text-gray-700 flex items-center justify-center"
+          >
+            <img
+              class="w-10 h-10 rounded-full mr-2"
+              :src="testimonial.authorImage"
+              alt="Author Image"
+            />
+            <p class="text-white">{{ testimonial.author }}</p>
+          </div>
+        </div>
+        <div
+          class="absolute top-0 left-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-500 hover:opacity-100"
+          style="background-color: rgba(255, 0, 0, 0.5); z-index: -1"
+        ></div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
-  setup() {
-    const generateRandomString = (length) => {
-      let result = "";
-      const characters = "The best bookmark";
-      const charactersLength = characters.length;
-      for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-    };
-
-    const getContrastColor = (color) => {
-      const [r, g, b] = color.replace(/[^\d,]/g, "").split(",");
-      const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-      return yiq >= 128 ? "black" : "white";
-    };
-
-    const testimonials = ref(
-      Array.from({ length: 5 }, () => {
-        const names = ["John", "Mary", "James", "Elizabeth", "William"];
-        const cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"];
-        const industries = ["technology", "finance", "healthcare", "education", "retail"];
-        const randomIndex = Math.floor(Math.random() * names.length);
-        const name = names[randomIndex];
-        const city = cities[randomIndex];
-        const industry = industries[randomIndex];
-        const messageLength = Math.floor(Math.random() * 100) + 50;
-        const message = "Best bookmark site in the world";
-        const avatar = `https://randomuser.me/api/portraits/men/${randomIndex + 1}.jpg`;
-
-        const bg = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
-          Math.random() * 256
-        )}, ${Math.floor(Math.random() * 256)})`;
-
-        return {
-          name,
-          city,
-          industry,
-          message,
-          avatar,
-          bg,
-          color: "",
-        };
-      })
-    );
-
-    onMounted(() => {
-      testimonials.value.forEach((testimonial) => {
-        testimonial.color = getContrastColor(testimonial.bg);
-      });
-    });
-
+  data() {
     return {
-      testimonials,
+      testimonials: [
+        {
+          content:
+            "I love using this bookmarking app! It's so easy to organize my links and access them from anywhere.",
+          author: "Franciscar jane",
+          authorImage: "https://randomuser.me/api/portraits/women/17.jpg",
+        },
+        {
+          content:
+            "Bookmark has made my life so much easier. I can save and access all my important links with just a few clicks.",
+          author: "Abraham Kipkurui",
+          authorImage: "https://randomuser.me/api/portraits/men/20.jpg",
+        },
+        {
+          content:
+            "I've tried a lot of bookmarking apps, but this one is by far the best. It's simple, fast, and has all the features I need.",
+          author: "Sara Johnson",
+          authorImage: "https://randomuser.me/api/portraits/women/34.jpg",
+        },
+        {
+          content:
+            "Bookmark is the perfect solution for anyone who wants to keep their online life organized. Highly recommended!",
+          author: "Francis Brown",
+          authorImage: "https://randomuser.me/api/portraits/men/34.jpg",
+        },
+        {
+          content:
+            "This app is a game-changer. I can finally keep all my bookmarks in one place and access them on any device.",
+          author: "Emily Davis",
+          authorImage: "https://randomuser.me/api/portraits/women/41.jpg",
+        },
+        {
+          content:
+            "Bookmark has saved me so much time and frustration. I don't know what I would do without it!",
+          author: "Tom Wilson",
+          authorImage: "https://randomuser.me/api/portraits/men/72.jpg",
+        },
+      ],
     };
   },
 };
 </script>
-
-<template>
-  <div class="flex flex-col justify-center items-center mx-auto gap-y-7">
-    <Swiper
-      class="swiper-cards"
-      :width="240"
-      :modules="[SwiperAutoplay, SwiperEffectCards]"
-      :slides-per-view="1"
-      :loop="true"
-      :effect="'cards'"
-      :autoplay="{
-        delay: 8000,
-        disableOnInteraction: true,
-      }"
-    >
-      <SwiperSlide v-for="(testimonial, idx) in testimonials" :key="idx" class="">
-        <div
-          class="testimonial-card"
-          :style="{ backgroundColor: testimonial.bg, color: testimonial.color }"
-        >
-          <div class="avatar-container">
-            <img
-              :src="testimonial.avatar"
-              alt="Avatar"
-              class="w-16 h-16 rounded-full mx-auto"
-            />
-          </div>
-          <div class="testimonial-text">
-            <p class="message text-sm leading-tight m-1">
-              {{ testimonial.message }}
-            </p>
-            <p class="name text-base font-medium">{{ testimonial.name }}</p>
-            <p class="city text-sm font-medium text-gray-600">
-              {{ testimonial.city }}, {{ testimonial.industry }}
-            </p>
-          </div>
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </div>
-</template>
-
-<style>
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  height: 20vh;
-  width: 100%;
-  margin: auto;
-  padding: 4px;
-  font-size: 4rem;
-}
-.swiper-wrapper {
-  min-width: 100vh;
-  width: 100vh;
-}
-.swiper-cards {
-  width: 240px;
-  height: 240px;
-  padding: 20px;
-}
-.swiper-cards .swiper-slide {
-  border-radius: 6px;
-  border: 1px solid black;
-  height: 200px;
-  width: 600px;
-  background: #fff;
-}
-@media (max-width: 768px) {
-  .swiper-slide {
-    font-size: 2rem;
-    margin: auto;
-  }
-  .swiper-wrapper {
-    min-width: 100%;
-    width: 100%;
-    margin: auto;
-    display: flex;
-  }
-  .swiper-cards {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    padding: 0;
-  }
-  .swiper-cards .swiper-slide {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-  }
-  .testimonial-card {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-  }
-}
-</style>

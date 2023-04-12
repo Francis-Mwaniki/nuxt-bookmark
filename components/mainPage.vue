@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div
-      class="bg-gradient-to-tr from-black via-[#01397A] hover:via-indigo-900 hover:to-black hover:transform hover:duration-300 to-black text-white py-4"
+      class="bg-gradient-to-tr from-black via-[#01397A] hover:via-[#01397A] hover:to-[#01397A] hover:transform hover:duration-300 to-black text-white py-4"
     >
       <!-- The best bookmark site in the world -->
       <h1 class="text-4xl font-bold text-center text-blue-100 nav-font mt-5">
@@ -24,8 +24,14 @@
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand:wght@600&display=swap");
 
+* {
+  font-family: "Poppins", sans-serif;
+  font-family: "Quicksand", sans-serif;
+}
 .nav-font {
+  font-family: "Poppins", sans-serif;
   font-family: "Quicksand", sans-serif;
 }
 </style>
