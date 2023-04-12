@@ -42,13 +42,12 @@
           </div>
         </div>
         <div class="flex justify-end">
-          <nuxt-link
-            to="NewBookMark"
+          <button
             class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
           >
             Create Bookmark
             <Icon name="ic:round-bookmark-add" class="h-10 w-10" />
-          </nuxt-link>
+          </button>
         </div>
       </form>
     </div>
