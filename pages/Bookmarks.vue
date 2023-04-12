@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-black">
+  <div class="min-h-screen bg-gradient-to-tr from-black via-[#01397A] to-[#01397A]">
     <div
-      class="container mx-auto px-4 py-3 bg-gradient-to-tr from-black via-[#01397A] to-black"
+      class="container mx-auto px-4 py-3 bg-gradient-to-tr from-black via-[#01397A] to-[#01397A]"
     >
       <div class="flex justify-end">
-        <Profile :showProfile="showProfile" />
+        <Profile :showProfile="showProfile" :user="user" />
       </div>
       <div class="flex justify-around items-center flex-row">
         <h1 class="text-3xl font-bold mb-4 text-white">Easily Manage your Bookmarks</h1>
@@ -217,6 +217,10 @@ export default {
         this.loading = false;
       }, 5000);
     },
+  },
+  setup() {
+    const user = useSupabaseUser();
+    return { user };
   },
 };
 </script>
