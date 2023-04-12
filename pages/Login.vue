@@ -5,8 +5,9 @@
     <div
       class="bg-gradient-to-tl from-black via-[#01397A] to-black p-8 rounded-lg shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4"
     >
-      <h2 class="text-xl text-gray-100 mb-4">{{ isSignup ? "Sign up" : "Log in" }}</h2>
-      <form>
+      <h2 class="text-xl text-gray-100 mb-4">Log in</h2>
+      <Loading v-if="auth.loading" />
+      <form @submit.prevent="login">
         <div class="mb-4">
           <label class="block text-gray-100 font-bold mb-2" for="email"> Email </label>
           <input
@@ -14,6 +15,7 @@
             id="email"
             type="email"
             v-model="email"
+            placeholder="Email"
           />
         </div>
         <div class="mb-6">
@@ -25,19 +27,20 @@
             id="password"
             type="password"
             v-model="password"
+            placeholder="Password"
           />
         </div>
         <button
           type="submit"
           class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          {{ isSignup ? "Sign up" : "Log in" }}
+          Log in
         </button>
       </form>
       <p class="mt-4 text-gray-100">
-        {{ isSignup ? "Already have an account?" : "Need an account?" }}
-        <a href="#" class="text-blue-300 hover:underline" @click.prevent="toggleForm">
-          {{ isSignup ? "Log in" : "Sign up" }}
+        Don't have an account?
+        <a href="#" class="text-blue-300 hover:underline" @click.prevent="goToSignup">
+          Sign up
         </a>
       </p>
       <!-- or continue with github icon button -->
@@ -53,20 +56,25 @@
     </div>
   </div>
 </template>
-
 <script>
-export default {
-  data() {
-    return {
-      isSignup: false,
-      email: "",
-      password: "",
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  setup() {
+    const auth = useLoginStore();
+    const router = useRouter();
+    const email = ref("");
+    const password = ref("");
+
+    const login = async () => {
+      await auth.createLogin({ email: email.value, password: password.value });
     };
+
+    const goToSignup = () => {
+      router.push("/signup");
+    };
+
+    return { password, login, goToSignup, email, auth };
   },
-  methods: {
-    toggleForm() {
-      this.isSignup = !this.isSignup;
-    },
-  },
-};
+});
 </script>

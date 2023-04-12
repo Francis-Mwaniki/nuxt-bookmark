@@ -1,8 +1,5 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "compilerOptions": {
-    "types": ["@nuxt/types", "@nuxt/image"]
-  },
+  // https://nuxt.com/docs/guide/concepts/typescrip
   "extends": "./.nuxt/tsconfig.json",
 
 }

@@ -9,14 +9,17 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt-swiper": "latest",
-    "nuxt": "^3.3.3"
+    "nuxt": "^3.3.3",
+    "nuxt-swiper": "latest"
   },
   "dependencies": {
     "@nuxt/devtools": "^0.3.2",
     "@nuxt/image": "^0.7.1",
     "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
+    "@nuxtjs/supabase": "^0.3.5",
     "@nuxtjs/tailwindcss": "^6.6.5",
-    "nuxt-icon": "^0.3.3"
+    "@pinia/nuxt": "^0.4.8",
+    "nuxt-icon": "^0.3.3",
+    "vue-toastification": "next"
   }
 }
