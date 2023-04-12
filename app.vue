@@ -58,9 +58,9 @@
   </div>
 </template>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand:wght@600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Poppins&family=Quicksand:wght@600&display=swap");
 * {
+  font-family: "EB Garamond", serif;
   font-family: "Poppins", sans-serif;
   font-family: "Quicksand", sans-serif;
 }
