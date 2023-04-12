@@ -12,7 +12,9 @@
     </button>
     <transition name="slide">
       <div v-show="showProfile" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex">
-        <div class="bg-white w-64 h-screen py-4 px-6 transform translate-x-0">
+        <div
+          class="bg-gradient-to-b from-white via-[#01397A] to-[#01397A] w-64 h-screen py-4 px-6 transform translate-x-0"
+        >
           <h2 class="text-lg font-bold mb-2">User Profile</h2>
           <p class="text-gray-600 text-sm mb-4">Username: John Doe</p>
           <div class="flex flex-col">
