@@ -4,12 +4,13 @@
       class="flex flex-col items-center sm:max-w-lg max-w-full rounded py-5 mx-auto px-2"
     >
       <h1 class="text-2xl font-bold text-gray-700 mb-4">Create Bookmark</h1>
-      <form class="w-full max-w-lg" @submit.prevent="createBookmark">
+      <Loading v-if="store.loading" class="" />
+      <form class="w-full max-w-lg" @submit.prevent="createBook">
         <div class="flex flex-wrap mb-6">
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="title"> Title </label>
             <input
-              v-model="newBookmark.title"
+              v-model="title"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="title"
               type="text"
@@ -20,7 +21,7 @@
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="url"> URL </label>
             <input
-              v-model="newBookmark.url"
+              v-model="url"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="url"
               type="url"
@@ -33,7 +34,7 @@
               Description
             </label>
             <textarea
-              v-model="newBookmark.description"
+              v-model="description"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="description"
               placeholder="Enter bookmark description"
@@ -54,30 +55,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      newBookmark: {
-        title: "",
-        url: "",
-        description: "",
-        icon: "",
-      },
-    };
-  },
-  methods: {
-    createBookmark() {
-      // Do something with newBookmark data, e.g. save it to a database
-      console.log(this.newBookmark);
-      // Clear form fields
-      this.newBookmark = {
-        title: "",
-        url: "",
-        description: "",
-        icon: "",
-      };
-    },
-  },
+<script setup>
+import { ref, computed } from "vue";
+import { useCreateBookMarkStore } from "~/composables/useCreateBookMark";
+const store = useCreateBookMarkStore();
+const user = store.$state.user;
+const title = ref("");
+const description = ref("");
+const url = ref("");
+
+const bookmark = computed(() => {
+  return {
+    title: title.value,
+    description: description.value,
+    url: url.value,
+  };
+});
+
+const createBook = async () => {
+  console.log(bookmark.value);
+  await store.create(bookmark.value);
 };
 </script>

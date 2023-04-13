@@ -7,7 +7,7 @@
     >
       <div class="mb-4"></div>
       <div class="mb-4">
-        <EditBookMark />
+        <EditBookMark :singleEditBookmark="singleEditBookmark" />
       </div>
 
       <div class="flex justify-end">
@@ -24,16 +24,7 @@
 
 <script>
 export default {
-  props: {
-    isCreate: {
-      type: Boolean,
-      default: false,
-    },
-    isEdit: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  props: ["singleEditBookmark"],
   data() {
     return {};
   },
