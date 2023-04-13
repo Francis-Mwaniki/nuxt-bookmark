@@ -37,14 +37,20 @@
               <Icon name="ic:outline-settings" class="h-6 w-6 mr-2" />
               <span>Settings</span>
             </a>
-            <a href="#" class="flex items-center text-gray-800">
-              <Icon name="ic:outline-info" class="h-6 w-6 mr-2" />
-              <span>Status</span>
-              <!-- show role -->
-            </a>
-            <a href="#" class="flex items-center underline text-sm" v-show="user">
-              <span class="text-gray-900"> {{ user.role }}</span>
+            <a href="#" class="flex items-center text-gray-800 flex-row gap-x-2">
+              <span
+                ><Icon name="ic:outline-info" class="h-6 w-6 mr-2" />
+                <span>Status</span></span
+              >
+              <div class="text-sm" v-show="user">
+                <span
+                  class="text-indigo-700 bg-transparent ring-2 rounded p-1 ring-white"
+                >
+                  {{ user.role }}</span
+                >
 
+                <!-- show role -->
+              </div>
               <!-- show role -->
             </a>
 

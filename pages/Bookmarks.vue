@@ -8,6 +8,7 @@
       </div>
       <div class="flex justify-around items-center flex-row">
         <h1 class="text-3xl font-bold mb-4 text-white">Easily Manage your Bookmarks</h1>
+        <Loading v-if="store.loading" class="" />
         <!-- create bookmark button -->
         <div>
           <!-- create bookmark button -->
@@ -32,6 +33,7 @@
           <EditModal
             v-if="showEditModal"
             @close="showEditModal = false"
+            :singleEditBookmark="singleEditBookmark"
             isEdit="isEdit"
           />
           <LoadBookMarks
@@ -56,7 +58,14 @@
           <button
             class="absolute top-0 left-0 p-2 text-gray-500 hover:text-gray-800"
             title="Edit Bookmark"
-            @click="Editing"
+            @click="
+              Editing(bookmark.user_id);
+              {
+                {
+                  showEditModal = true;
+                }
+              }
+            "
           >
             <Icon name="ic:round-edit" class="h-5 w-5" />
           </button>
@@ -104,41 +113,10 @@
 </template>
 
 <script>
+import { useCreateBookMarkStore } from "~/composables/useCreateBookMark";
 export default {
   data() {
     return {
-      bookmarks: [
-        {
-          url: "https://www.google.com/",
-          title: "Google",
-          description: "Search engine",
-        },
-        {
-          url: "https://www.facebook.com/",
-          title: "Facebook",
-          description: "Social media",
-        },
-        {
-          url: "https://www.youtube.com/",
-          title: "YouTube",
-          description: "Video sharing platform",
-        },
-        {
-          url: "https://www.twitter.com/",
-          title: "Twitter",
-          description: "Social media",
-        },
-        {
-          url: "https://www.amazon.com/",
-          title: "Amazon",
-          description: "Online retailer",
-        },
-        {
-          url: "https://www.netflix.com/",
-          title: "Netflix",
-          description: "Streaming service",
-        },
-      ],
       moreBookmarks: [
         {
           title: "Vue.js Documentation",
@@ -196,20 +174,12 @@ export default {
 
       showModal: false,
       showDeleteModal: false,
-      isCreate: true,
-      showEditModal: false,
-      isEdit: true,
       showLoadModal: false,
       showProfile: false,
       loading: false,
     };
   },
   methods: {
-    Editing() {
-      this.isEdit = true;
-      this.showEditModal = true;
-      this.isCreate = false;
-    },
     load() {
       this.showLoadModal = true;
       this.loading = true;
@@ -220,7 +190,31 @@ export default {
   },
   setup() {
     const user = useSupabaseUser();
-    return { user };
+    const store = useCreateBookMarkStore();
+    const bookmarks = computed(() => store.books);
+    let isEdit = ref(false);
+    let isCreate = ref(false);
+    let singleEditBookmark = ref("");
+    let showEditModal = ref(false);
+
+    onMounted(() => {
+      store.getBookmarks();
+    });
+    async function Editing(id) {
+      showEditModal = true;
+      singleEditBookmark.value = id;
+    }
+
+    return {
+      user,
+      store,
+      bookmarks,
+      Editing,
+      isEdit,
+      isCreate,
+      singleEditBookmark,
+      showEditModal,
+    };
   },
 };
 </script>

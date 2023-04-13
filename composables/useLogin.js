@@ -6,11 +6,11 @@ export const useLoginStore = defineStore("Login-store", {
   state: () => ({
     users: [],
     loading: false,
-    client: useSupabaseAuthClient(),
   }),
   actions: {
     //create a new book
     async createLogin(user, options = {}) {
+      const client=useSupabaseAuthClient()
       const toastOptions = {
         position: "top-center",
         timeout: 5000,
@@ -28,7 +28,7 @@ export const useLoginStore = defineStore("Login-store", {
       };
       this.loading = true;
       console.log(user);
-      const { data, error } = await this.client.auth.signInWithPassword({
+      const { data, error } = await client.auth.signInWithPassword({
         email: user.email,
         password: user.password,
       });

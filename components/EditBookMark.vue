@@ -9,7 +9,7 @@
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="title"> Title </label>
             <input
-              v-model="newBookmark.title"
+              v-model="singleBookmark.title"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="title"
               type="text"
@@ -20,7 +20,7 @@
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="url"> URL </label>
             <input
-              v-model="newBookmark.url"
+              v-model="singleBookmark.url"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="url"
               type="url"
@@ -33,7 +33,7 @@
               Description
             </label>
             <textarea
-              v-model="newBookmark.description"
+              v-model="singleBookmark.description"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="description"
               placeholder="Enter bookmark description"
@@ -41,6 +41,7 @@
             ></textarea>
           </div>
         </div>
+
         <div class="flex justify-end">
           <button
             class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
@@ -55,29 +56,26 @@
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useCreateBookMarkStore } from "~/composables/useCreateBookMark";
 export default {
-  data() {
+  props: ["singleEditBookmark"],
+  setup(props) {
+    const store = useCreateBookMarkStore();
+    const singleBookmark = computed(() => store.$state.singleBook);
+    const newBookmark = ref({
+      title: singleBookmark.title,
+      url: singleBookmark.url,
+      description: singleBookmark.description,
+    });
+
     return {
-      newBookmark: {
-        title: "",
-        url: "",
-        description: "",
-        icon: "",
-      },
+      store,
+      newBookmark,
+      singleBookmark,
     };
   },
-  methods: {
-    createBookmark() {
-      // Do something with newBookmark data, e.g. save it to a database
-      console.log(this.newBookmark);
-      // Clear form fields
-      this.newBookmark = {
-        title: "",
-        url: "",
-        description: "",
-        icon: "",
-      };
-    },
-  },
 };
+
+/* retrieve single bookmark by id  from supabase  singleEditBookmark*/
 </script>

@@ -6,11 +6,12 @@ export const useRegisterStore = defineStore("Register-store", {
   state: () => ({
     users: [],
     loading: false,
-    client: useSupabaseAuthClient(),
+   
   }),
   actions: {
     //create a new book
     async create(user, options = {}) {
+      const client=useSupabaseAuthClient()
       const toastOptions = {
         position: "top-center",
         timeout: 5000,
@@ -27,7 +28,7 @@ export const useRegisterStore = defineStore("Register-store", {
        
       };
       this.loading = true;
-      const { data, error } = await this.client.auth.signUp({
+      const { data, error } = await client.auth.signUp({
         email: user.email,
         password: user.password,
       });
