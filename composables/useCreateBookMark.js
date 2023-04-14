@@ -5,6 +5,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
     state: () => ({
         loading: false,
         currentUserId: null,
+        Warn:'',
         books: [],
         singleBook: 
          {
@@ -85,22 +86,37 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
 
             }
             const user=useSupabaseUser()
+           try {
             this.loading = true
             const client = useSupabaseAuthClient()
-            const { data, error } = await client
-                .from('bookmarks')
-                .select('*')
-                .eq('user', user.value.id)
-            if (error) {
+            if(user.value.id==null){
+                useToast().error('You have no bookmarks yet', toastOptions)
                 this.loading = false
-                useToast().error(error.message, toastOptions)
             }
-            if (data) {
-                this.books = data
-                this.loading = false
-                console.log(this.books);
 
-            }
+           else{
+            const { data, error } = await client
+            .from('bookmarks')
+            .select('*')
+            .eq('user', user.value.id)
+            /* null do something */
+           
+        if (error) {
+            this.loading = false
+            useToast().error(error.message, toastOptions)
+        }
+        if (data) {
+            this.books = data
+            this.loading = false
+            console.log(this.books);
+
+        }
+           }
+           } catch (error) {
+            useToast().info("?Have you created any bookmark", toastOptions)
+            this.$state.Warn="You have no bookmarks yet"
+            this.loading = false
+           }
         },
         /* fetch only six bookmarks */
         async getSixBookmarks() {
@@ -236,7 +252,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 const { data, error } = await client
                 .from('bookmarks')
                 .select('*')
-                .eq('user_id', 29)
+                .eq('user_id', id)
             if (error) {
                 this.loading = false
                 useToast().error(error.message, toastOptions)
