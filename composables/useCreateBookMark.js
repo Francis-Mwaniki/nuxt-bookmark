@@ -7,6 +7,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
         currentUserId: null,
         Warn:'',
         books: [],
+        activity:'',
         singleBook: 
          {
             title: '',
@@ -61,6 +62,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 useToast().error(error.message, toastOptions)
             }else{
                 useToast().success('Bookmark created successfully', toastOptions)
+                this.$state.activity="Bookmark created successfully"
                 setTimeout(() => {
                     this.loading = false
                 }, 4000)
