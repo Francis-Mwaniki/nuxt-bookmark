@@ -212,7 +212,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
         }
         setTimeout(() => {
             this.loading = false
-            useToast().success('Bookmark deleted successfully', toastOptions)
+            useToast().success('Bookmark deleted', toastOptions)
             window.location.reload()
         }, 4000)
 
@@ -240,7 +240,8 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
             }
             this.loading = true
             const client = useSupabaseAuthClient()
-            const { data, error } = await client
+            try {
+                const { data, error } = await client
 
                 .from('bookmarks')
                 .update({ title: title, url: url, description: description })
@@ -249,15 +250,16 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 this.loading = false
                 useToast().error(error.message, toastOptions)
             }
-            if (data) {
+           
+            setTimeout(() => {
                 this.loading = false
-                useToast().success('Bookmark updated successfully', toastOptions)
-                setTimeout(() => {
-                    location.reload()
-                }
+                useToast().success('Bookmark updated', toastOptions)
+                window.location.reload()
+            }, 4000) 
 
-                , 4000)
-
+            } catch (error) {
+                useToast().error("Unexpected. try again.", toastOptions)
+                this.loading = false
             }
         },
         //get a bookmark by id

@@ -46,6 +46,7 @@
         <div class="flex justify-end">
           <button
             class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
+            type="submit"
           >
             Update Bookmark
             <Icon name="ic:round-bookmark-add" class="h-10 w-10" />
@@ -98,10 +99,19 @@ export default {
         console.log(data);
       }
     }
+    async function createBookmark() {
+      await store.update({
+        id: singleBookmark.value,
+        title: title.value,
+        url: url.value,
+        description: description.value,
+      });
+    }
 
     return {
       newBookmark,
       title,
+      createBookmark,
       url,
       description,
       store,
