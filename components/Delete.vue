@@ -2,6 +2,7 @@
   <div
     class="fixed top-0 left-0 right-0 bottom-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50"
   >
+    <Loading v-if="store.$state.loading" class="" />
     <div
       class="bg-white rounded-lg shadow-lg p-4 transform transition-all duration-500 ease-in-out"
     >
@@ -16,7 +17,7 @@
         </button>
         <button
           class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-          @click="deleteBookmark"
+          @click="deleteBookmark(newId)"
         >
           Delete
         </button>
@@ -26,14 +27,24 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading.vue";
 export default {
+  props: ["deleteId", "showDeleteModal"],
   methods: {
     closeModal() {
       this.$emit("close");
     },
-    deleteBookmark() {
-      // Your deletion logic goes here
-    },
+  },
+  setup(props) {
+    let newId = ref(props.deleteId);
+    const store = useCreateBookMarkStore();
+    async function deleteBookmark(id) {
+      await store.delete(id);
+    }
+    return { newId, deleteBookmark, store };
+  },
+  components: {
+    Loading,
   },
 };
 </script>

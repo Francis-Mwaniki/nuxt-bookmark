@@ -4,12 +4,13 @@
       class="flex flex-col items-center sm:max-w-lg max-w-full rounded py-5 mx-auto px-2"
     >
       <h1 class="text-2xl font-bold text-gray-700 mb-4">Update Bookmark</h1>
+      <Loading v-if="store.$state.loading" class="" />
       <form class="w-full max-w-lg" @submit.prevent="createBookmark">
         <div class="flex flex-wrap mb-6">
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="title"> Title </label>
             <input
-              v-model="singleBookmark.title"
+              v-model="title"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="title"
               type="text"
@@ -20,7 +21,7 @@
           <div class="w-full mb-3">
             <label class="block text-gray-700 font-bold mb-2" for="url"> URL </label>
             <input
-              v-model="singleBookmark.url"
+              v-model="url"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="url"
               type="url"
@@ -33,7 +34,7 @@
               Description
             </label>
             <textarea
-              v-model="singleBookmark.description"
+              v-model="description"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="description"
               placeholder="Enter bookmark description"
@@ -61,18 +62,49 @@ import { useCreateBookMarkStore } from "~/composables/useCreateBookMark";
 export default {
   props: ["singleEditBookmark"],
   setup(props) {
-    const store = useCreateBookMarkStore();
-    const singleBookmark = computed(() => store.$state.singleBook);
+    let title = ref("");
+    let url = ref("");
+    let description = ref("");
     const newBookmark = ref({
-      title: singleBookmark.title,
-      url: singleBookmark.url,
-      description: singleBookmark.description,
+      title: "",
+      url: "",
+      description: "",
     });
+    const singleBookmark = ref(props.singleEditBookmark);
+    onMounted(async () => {
+      /* title.value = singleBookmark.value.title;
+      url.value = singleBookmark.value.url;
+      description.value = singleBookmark.value.description; */
+      await getBookmarkById(singleBookmark.value);
+    });
+    /* get singleBookMarkbyid  */
+    const client = useSupabaseClient();
+    const store = useCreateBookMarkStore();
+
+    async function getBookmarkById(id) {
+      store.loading = true;
+      const { data, error } = await client
+        .from("bookmarks")
+        .select("*")
+        .eq("user_id", id);
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        store.loading = false;
+        title.value = data[0].title;
+        url.value = data[0].url;
+        description.value = data[0].description;
+        console.log(data);
+      }
+    }
 
     return {
-      store,
       newBookmark,
-      singleBookmark,
+      title,
+      url,
+      description,
+      store,
     };
   },
 };

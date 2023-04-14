@@ -4,10 +4,16 @@
   >
     <Delete
       v-if="showDeleteModal"
+      :deleteId="deleteId"
       @close="showDeleteModal = false"
       :showDeleteModal="showDeleteModal"
     />
-    <EditModal v-if="showEditModal" @close="showEditModal = false" isEdit="isEdit" />
+    <EditModal
+      v-if="showEditModal"
+      @close="showEditModal = false"
+      isEdit="isEdit"
+      :singleEditBookmark="singleEditBookmark"
+    />
     <Loading v-if="loading" class="" />
     <div
       class="bg-white sm:w-3/4 p-6 w-full rounded-lg shadow-lg transform transition-all duration-1000 ease-in-out sm:overflow-auto sm:mt-20 max-h-screen"
@@ -17,7 +23,7 @@
       <div class="mb-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div
-            v-for="(bookmark, index) in moreBookmarks"
+            v-for="(bookmark, index) in bookmarks"
             :key="index"
             class="bg-gray-100 p-4 rounded-lg shadow relative"
           >
@@ -28,13 +34,19 @@
             }}</a>
             <div class="absolute top-0 right-0 flex justify-center items-center">
               <button
-                @click="showDeleteModal = true"
+                @click="
+                  Delete(bookmark.user_id);
+                  showDeleteModal = true;
+                "
                 class="mx-2 text-gray-600 hover:text-gray-900"
               >
                 <Icon name="mdi:delete" class="h-7 w-7 text-gray-600" />
               </button>
               <button
-                @click="showEditModal = true"
+                @click="
+                  Editing(bookmark.user_id);
+                  showEditModal = true;
+                "
                 class="mx-2 text-gray-600 hover:text-gray-900"
               >
                 <Icon name="mdi:pencil" class="h-7 w-7 text-gray-600" />
@@ -67,7 +79,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    moreBookmarks: {
+    bookmarks: {
       type: Array,
       required: true,
     },
@@ -79,6 +91,10 @@ export default {
       type: Boolean,
       required: true,
     },
+    singleEditBookmark: {
+      type: Object,
+      required: true,
+    },
     loading: {
       type: Boolean,
       required: true,
@@ -88,6 +104,23 @@ export default {
     closeModal() {
       this.$emit("close");
     },
+  },
+  setup(props) {
+    let showEditModal = ref(props.showEditModal);
+    let singleEditBookmark = ref(props.singleEditBookmark);
+    let deleteId = ref(null);
+
+    async function Editing(id) {
+      showEditModal.value = true;
+      singleEditBookmark.value = id;
+      console.log(singleEditBookmark.value);
+    }
+    async function Delete(id) {
+      deleteId.value = id;
+      console.log(deleteId.value);
+    }
+
+    return { Editing, showEditModal, singleEditBookmark, Delete, deleteId };
   },
 };
 </script>

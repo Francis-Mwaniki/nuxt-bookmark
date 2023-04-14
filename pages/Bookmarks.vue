@@ -39,13 +39,18 @@
           <LoadBookMarks
             v-if="showLoadModal"
             @close="showLoadModal = false"
-            :moreBookmarks="moreBookmarks"
+            :bookmarks="bookmarks"
             :showDeleteModal="showDeleteModal"
+            :singleEditBookmark="singleEditBookmark"
             :showEditModal="showEditModal"
             :loading="loading"
           />
 
-          <Delete v-if="showDeleteModal" @close="showDeleteModal = false" />
+          <Delete
+            v-if="showDeleteModal"
+            @close="showDeleteModal = false"
+            :deleteId="deleteId"
+          />
         </div>
       </div>
       <!-- refresh icon  -->
@@ -59,7 +64,7 @@
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
-          v-for="bookmark in bookmarks"
+          v-for="bookmark in limitedBookmarks"
           :key="bookmark.url"
           class="bg-white rounded-lg shadow-md relative hover:ring-2 hover:ring-yellow-600 hover:shadow-lg hover:shadow-black"
         >
@@ -67,14 +72,7 @@
           <button
             class="absolute top-0 left-0 p-2 text-gray-500 hover:text-gray-800"
             title="Edit Bookmark"
-            @click="
-              Editing(bookmark.user_id);
-              {
-                {
-                  showEditModal = true;
-                }
-              }
-            "
+            @click="Editing(bookmark.user_id)"
           >
             <Icon name="ic:round-edit" class="h-5 w-5" />
           </button>
@@ -96,7 +94,10 @@
             </div>
             <!-- delete button -->
             <button
-              @click="showDeleteModal = true"
+              @click="
+                Delete(bookmark.user_id);
+                showDeleteModal = true;
+              "
               class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
             >
               delete
@@ -140,107 +141,66 @@ import { useCreateBookMarkStore } from "~/composables/useCreateBookMark";
 export default {
   data() {
     return {
-      moreBookmarks: [
-        {
-          title: "Vue.js Documentation",
-          description: "The official documentation for Vue.js",
-          url: "https://vuejs.org/v2/guide/",
-        },
-        {
-          title: "Tailwind CSS",
-          description: "A utility-first CSS framework",
-          url: "https://tailwindcss.com/",
-        },
-        {
-          title: "GitHub",
-          description: "A web-based hosting service for version control",
-          url: "https://github.com/",
-        },
-        {
-          title: "Stack Overflow",
-          description: "A question and answer community for programmers",
-          url: "https://stackoverflow.com/",
-        },
-        {
-          title: "MDN Web Docs",
-          description: "Mozilla's documentation for web technologies",
-          url: "https://developer.mozilla.org/en-US/",
-        },
-        {
-          title: "CSS Tricks",
-          description: "A website about web development",
-          url: "https://css-tricks.com/",
-        },
-        {
-          title: "Google Developers",
-          description: "Resources for developers, by developers",
-          url: "https://developers.google.com/",
-        },
-        {
-          title: "W3Schools",
-          description: "Web development tutorials",
-          url: "https://www.w3schools.com/",
-        },
-        {
-          title: "Netlify",
-          description:
-            "A cloud computing company that offers hosting and serverless backend services",
-          url: "https://www.netlify.com/",
-        },
-        {
-          title: "FreeCodeCamp",
-          description:
-            "A non-profit organization that consists of an interactive learning web platform",
-          url: "https://www.freecodecamp.org/",
-        },
-      ],
-
       showModal: false,
       showDeleteModal: false,
-      showLoadModal: false,
       showProfile: false,
       loading: false,
     };
   },
-  methods: {
-    load() {
-      this.showLoadModal = true;
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 5000);
-    },
-  },
+  methods: {},
   setup() {
     const user = useSupabaseUser();
     const store = useCreateBookMarkStore();
     const bookmarks = computed(() => store.books);
+    const limitedBookmarks = computed(() => store.limitedBooks);
     let isEdit = ref(false);
     let isCreate = ref(false);
-    let singleEditBookmark = ref("");
+    let showLoadModal = ref(false);
+    let deleteId = ref(null);
+    let singleEditBookmark = ref({});
     let showEditModal = ref(false);
 
     onMounted(() => {
-      store.getBookmarks();
+      store.getSixBookmarks();
     });
     async function refresh() {
+      store.$state.loading = true;
+      await store.getBookmarks();
+      await store.getSixBookmarks();
+      setTimeout(() => {
+        store.$state.loading = false;
+      }, 5000);
+    }
+    async function Editing(id) {
+      showEditModal.value = true;
+      /*  await store.getBookmarkById(id); */
+      singleEditBookmark.value = id;
+      console.log(singleEditBookmark.value);
+    }
+    async function load() {
+      showLoadModal.value = true;
       store.$state.loading = true;
       await store.getBookmarks();
       setTimeout(() => {
         store.$state.loading = false;
       }, 5000);
     }
-    async function Editing(id) {
-      showEditModal = true;
-      singleEditBookmark.value = id;
+    async function Delete(id) {
+      deleteId.value = id;
+      console.log(deleteId.value);
     }
 
     return {
       user,
       refresh,
+      Delete,
+      deleteId,
+      showLoadModal,
       store,
       bookmarks,
+      limitedBookmarks,
       Editing,
+      load,
       isEdit,
       isCreate,
       singleEditBookmark,
