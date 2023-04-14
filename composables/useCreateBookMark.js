@@ -7,7 +7,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
         currentUserId: null,
         Warn:'',
         books: [],
-        activity:'',
+        activity:'None',
         singleBook: 
          {
             title: '',
@@ -24,6 +24,26 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
 
         
     }),
+    getters: {
+        /* getBook: (state) => (id) => {
+            return state.books.find((book) => book.id === id)
+        },
+        getLimitedBooks: (state) => {
+            return state.limitedBooks
+        },
+        getBookmarks: (state) => {
+            return state.books
+        },
+        getSingleBook: (state) => {
+            return state.singleBook
+        }, */
+        getActivity: (state) => {
+            return state.activity
+        }
+       /*  getWarn: (state) => {
+            return state.Warn
+        }, */
+    },
     actions: {
        //create a new bookmark in regards to current logged in user
         async create(book, options = {}) {
@@ -62,7 +82,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 useToast().error(error.message, toastOptions)
             }else{
                 useToast().success('Bookmark created successfully', toastOptions)
-                this.$state.activity="Bookmark created successfully"
+                this.$state.activity=book.title + " created"
                 setTimeout(() => {
                     this.loading = false
                 }, 4000)
@@ -110,7 +130,6 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
         if (data) {
             this.books = data
             this.loading = false
-            console.log(this.books);
 
         }
            }
@@ -138,6 +157,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
 
             }
             const user=useSupabaseUser()
+           try {
             this.loading = true
             const client = useSupabaseAuthClient()
             const { data, error } = await client
@@ -154,9 +174,14 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
             if (data) {
                 this.limitedBooks = data
                 this.loading = false
-                console.log(this.limitedBooks);
 
             }
+           } catch (error) {
+            useToast().info("?Have you created any bookmark", toastOptions)
+            this.$state.Warn="You have no bookmarks yet"
+            this.loading = false
+            
+           }
         },
         // delete a bookmark
         async delete(id) {
@@ -176,23 +201,26 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
             }
             this.loading = true
             const client = useSupabaseAuthClient()
+           try {
             const { data, error } = await client
-                .from('bookmarks')
-                .delete()
-                .eq('id', id)
-            if (error) {
-                this.loading = false
-                useToast().error(error.message, toastOptions)
-            }
-            if (data) {
-                this.loading = false
-                useToast().success('Bookmark deleted successfully', toastOptions)
-                setTimeout(() => {
-                    location.reload()
-                }
+            .from('bookmarks')
+            .delete()
+            .eq('user_id', id)
+        if (error) {
+            this.loading = false
+            useToast().error(error.message, toastOptions)
+        }
+        setTimeout(() => {
+            this.loading = false
+            useToast().success('Bookmark deleted', toastOptions)
+            window.location.reload()
+        }, 4000)
 
-                , 4000)
-            }
+           } catch (error) {
+            useToast().error("Unexpected. try again.", toastOptions)
+            this.loading = false
+           }
+         
         },
         // update a bookmark
         async update(id, title, url, description) {
@@ -212,24 +240,26 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
             }
             this.loading = true
             const client = useSupabaseAuthClient()
-            const { data, error } = await client
+            try {
+                const { data, error } = await client
 
                 .from('bookmarks')
                 .update({ title: title, url: url, description: description })
-                .eq('id', id)
+                .eq('user_id', id)
             if (error) {
                 this.loading = false
                 useToast().error(error.message, toastOptions)
             }
-            if (data) {
+           
+            setTimeout(() => {
                 this.loading = false
-                useToast().success('Bookmark updated successfully', toastOptions)
-                setTimeout(() => {
-                    location.reload()
-                }
+                useToast().success('Bookmark updated', toastOptions)
+                window.location.reload()
+            }, 4000) 
 
-                , 4000)
-
+            } catch (error) {
+                useToast().error("Unexpected. try again.", toastOptions)
+                this.loading = false
             }
         },
         //get a bookmark by id
@@ -260,9 +290,12 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 useToast().error(error.message, toastOptions)
             }
             if (data) {
-                this.singleBook = data[0]
+                this.singleBook.title = data[0]['title']
+                this.singleBook.url = data[0]['url']
+                this.singleBook.description = data[0]['description']
+                 
+
                 this.loading = false
-                console.log(data[0]);
                  
             }
               } catch (error) {

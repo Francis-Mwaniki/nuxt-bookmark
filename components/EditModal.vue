@@ -33,6 +33,9 @@ export default {
       this.$emit("close");
     },
   },
+  setup(props) {
+    return { ...toRefs(props) };
+  },
 };
 </script>
 
