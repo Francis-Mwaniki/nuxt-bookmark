@@ -15,7 +15,7 @@
         v-show="user"
       >
         <!-- pick the first 2 -->
-        {{ user.email.slice(0, 2).toUpperCase() }}
+        {{ user ? user.email.slice(0, 2).toUpperCase() : "N/A" }}
       </span>
     </button>
     <transition name="slide">
@@ -24,10 +24,10 @@
           class="bg-gradient-to-b from-white via-[#01397A] to-[#01397A] w-64 h-screen py-4 px-6 transform translate-x-0"
         >
           <h2 class="text-lg font-bold mb-2">User Profile</h2>
-          <p class="text-gray-600 text-sm mb-4" v-show="user">
-            Username: {{ user.email }}
+          <p class="text-gray-600 text-sm mb-4" v-if="user">
+            Username: {{ user ? user.email : "Not logged in" }}
           </p>
-          <p class="text-gray-600 text-sm mb-4" v-show="!user">Username: Not Logged In</p>
+          <p class="text-gray-600 text-sm mb-4" v-else>Username: Not Logged In</p>
           <div class="flex flex-col">
             <a href="#" class="flex items-center text-gray-800 mb-2">
               <Icon name="ic:outline-account-circle" class="h-6 w-6 mr-2" />
@@ -42,7 +42,7 @@
                 ><Icon name="ic:outline-info" class="h-6 w-6 mr-2" />
                 <span>Status</span></span
               >
-              <div class="text-sm" v-show="user">
+              <div class="text-sm" v-if="user">
                 <span
                   class="text-indigo-700 bg-transparent ring-2 rounded p-1 ring-white"
                 >
@@ -53,6 +53,14 @@
               </div>
               <!-- show role -->
             </a>
+            <button
+              class="flex items-center text-gray-100 bg-yellow-700 py-2 px-3 rounded mb-2 my-3"
+              v-if="user"
+              @click="logoutUser.logout"
+            >
+              <Icon name="ic:round-logout" class="h-6 w-6 mr-2" />
+              <span>Logout</span>
+            </button>
 
             <!-- close -->
             <button
@@ -84,6 +92,11 @@ export default {
   },
   mounted() {
     console.log(this.user);
+  },
+  setup(props) {
+    const logoutUser = useLoginStore();
+
+    return { logoutUser, ...toRefs(props) };
   },
 };
 </script>

@@ -12,7 +12,7 @@
         <!-- create bookmark button -->
         <div>
           <!-- create bookmark button -->
-          <div class="flex justify-center">
+          <div class="flex justify-center" v-if="user">
             <button
               @click="
                 showModal = true;
@@ -96,6 +96,20 @@
           </div>
         </div>
       </div>
+      <!-- show no bookmark when no user logged -->
+      <div v-if="bookmarks.length === 0" class="text-center py-4 px-5">
+        <h1 class="text-3xl font-bold mb-4 text-white italic">{{ store.Warn }}</h1>
+        <div class="flex justify-center" v-show="!user">
+          <Nuxt-Link
+            to="/Login"
+            class="bg-yellow-600 text-white md:text-xl text-xs px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
+          >
+            Login to continue
+            <Icon name="ic:baseline-login" class="sm:h-10 h-7 w-7 sm:w-10" />
+          </Nuxt-Link>
+        </div>
+      </div>
+
       <div class="flex justify-center mx-auto items-center mt-3">
         <button
           @click="load"
