@@ -48,6 +48,15 @@
           <Delete v-if="showDeleteModal" @close="showDeleteModal = false" />
         </div>
       </div>
+      <!-- refresh icon  -->
+      <div class="flex justify-end">
+        <button
+          class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
+          @click="refresh"
+        >
+          <Icon name="ic:round-refresh" class="h-5 w-5" />
+        </button>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="bookmark in bookmarks"
@@ -116,11 +125,11 @@
           class="bg-yellow-600 text-white px-4 py-2 rounded-lg cursor-pointer ring-1 ring-white my-2"
         >
           Load more
-          <Icon name="ic:round-bookmarks" class="h-8 rounded-full w-8" />
+          <Icon name="ic:round-refresh" class="h-8 rounded-full w-8" />
         </button>
       </div>
       <div class="mt-8">
-        <RecentActivty />
+        <RecentActivty :user="user" :store="store" />
       </div>
     </div>
   </div>
@@ -214,6 +223,13 @@ export default {
     onMounted(() => {
       store.getBookmarks();
     });
+    async function refresh() {
+      store.$state.loading = true;
+      await store.getBookmarks();
+      setTimeout(() => {
+        store.$state.loading = false;
+      }, 5000);
+    }
     async function Editing(id) {
       showEditModal = true;
       singleEditBookmark.value = id;
@@ -221,6 +237,7 @@ export default {
 
     return {
       user,
+      refresh,
       store,
       bookmarks,
       Editing,

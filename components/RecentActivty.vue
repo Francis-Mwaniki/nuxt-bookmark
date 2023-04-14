@@ -12,8 +12,11 @@
             />
           </svg>
           <p class="text-gray-600">
-            New bookmark added:
-            <a href="#" class="text-blue-600 hover:underline">www.example.com</a>
+            {{ activity ? " New bookmark added:" : "Nothing to show" }}
+            <a href="#" class="text-blue-600 hover:underline">{{
+              store.$state.activity
+            }}</a>
+            {{ store.$state.activity ? "by" : "" }}
           </p>
         </div>
         <div class="flex items-center">
@@ -24,13 +27,47 @@
               clip-rule="evenodd"
             />
           </svg>
-          <p class="text-gray-600">Logged in at 2:45pm</p>
+          <p class="text-gray-600" v-if="user">Logged in at {{ formattedDate }}</p>
+          <p class="text-gray-600" v-else>Not logged in</p>
+        </div>
+        <!-- Admin  email-->
+        <div class="flex items-center py-1">
+          <Icon
+            name="ic:outline-admin-panel-settings"
+            class="h-6 w-6 mr-2 text-gray-600"
+          />
+          <p class="text-gray-600" v-if="user">Admin : {{ user.email }}</p>
+          <p class="text-gray-600" v-else>Not logged in</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script>
+import { useLoginStore } from "@/composables/useLogin";
+import { useCreateBookMarkStore } from "@/composables/useCreateBookMark";
+import moment from "moment";
+import { ref, computed } from "vue";
+import { Icon } from "@iconify/vue";
+export default {
+  props: {
+    user: {
+      type: Object,
+      default: null,
+    },
+  },
+  setup(props) {
+    const store = useCreateBookMarkStore();
+    const activity = computed(() => store.activity);
+    let currentUserTime = computed(() => props.user.last_sign_in_at);
+    const formattedDate = computed(() => {
+      return moment(currentUserTime.value).format("MMMM Do YYYY, h:mm:ss a");
+    });
+    return { formattedDate, store, activity };
+  },
+  components: { Icon },
+};
+</script>
 
 <style scoped></style>
