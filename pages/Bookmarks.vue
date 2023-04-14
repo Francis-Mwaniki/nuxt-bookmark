@@ -129,7 +129,7 @@
         </button>
       </div>
       <div class="mt-8">
-        <RecentActivty :user="user" :store="store" />
+        <Activity :user="user" />
       </div>
     </div>
   </div>

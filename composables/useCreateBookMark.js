@@ -7,7 +7,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
         currentUserId: null,
         Warn:'',
         books: [],
-        activity:'',
+        activity:'None',
         singleBook: 
          {
             title: '',
@@ -24,6 +24,26 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
 
         
     }),
+    getters: {
+        /* getBook: (state) => (id) => {
+            return state.books.find((book) => book.id === id)
+        },
+        getLimitedBooks: (state) => {
+            return state.limitedBooks
+        },
+        getBookmarks: (state) => {
+            return state.books
+        },
+        getSingleBook: (state) => {
+            return state.singleBook
+        }, */
+        getActivity: (state) => {
+            return state.activity
+        },
+       /*  getWarn: (state) => {
+            return state.Warn
+        }, */
+    },
     actions: {
        //create a new bookmark in regards to current logged in user
         async create(book, options = {}) {
@@ -62,7 +82,7 @@ export const useCreateBookMarkStore = defineStore('Create-bookmark-store', {
                 useToast().error(error.message, toastOptions)
             }else{
                 useToast().success('Bookmark created successfully', toastOptions)
-                this.$state.activity="Bookmark created successfully"
+                this.$state.activity=book.title + " created"
                 setTimeout(() => {
                     this.loading = false
                 }, 4000)
