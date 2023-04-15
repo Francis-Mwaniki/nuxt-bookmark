@@ -58,7 +58,7 @@
       <!-- or continue with github icon button -->
       <div class="flex justify-center mt-4">
         <button
-          @click="auth.loginWithGithub"
+          @click="provider.loginWithGithub"
           class="bg-yellow-800 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           <Icon name="uil:github" class="h-6 w-6" />
@@ -75,6 +75,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
     const auth = useRegisterStore();
+    const provider = useLoginStore();
     const router = useRouter();
 
     const email = ref("");
@@ -110,7 +111,7 @@ export default defineComponent({
       };
     });
 
-    return { email, password, signup, goToLogin, auth };
+    return { email, password, signup, goToLogin, auth, provider };
   },
 });
 </script>
