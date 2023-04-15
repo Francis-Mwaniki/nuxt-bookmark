@@ -1,4 +1,17 @@
-# Nuxt 3 Minimal Starter
+## Korasry is a bookmark project
+
+## live webapp 
+-https://korasry.vercel.app/
+
+## contributor
+ Francis Mwaniki (i alone)
+ 
+## Supabase Usage
+#### I used supabase
+ 1.created crud functions to create, update, read, and delete bookmark.
+ 2.Use auth provider. Email and Github.
+
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
