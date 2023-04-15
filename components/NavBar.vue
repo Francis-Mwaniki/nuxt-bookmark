@@ -53,6 +53,29 @@
         </li>
         <li
           class="nav-item"
+          :class="{ active: current === 'contact' }"
+          @click="current = 'contact'"
+        >
+          <nuxt-link to="/Pricing">
+            <div class="flex items-center">
+              <Icon
+                name="ic:sharp-attach-money"
+                class="h-6 w-6 mr-2 text-gray-100 hover:text-yellow-700 hover:translate-2 hover:duration-300 hover:ease-in-out"
+              />
+              <span
+                class="text-gray-100"
+                :class="
+                  current
+                    ? 'hover:border-yellow-700 hover:border-b-2 hover:translate-2 hover:duration-300  hover:ease-in-out'
+                    : ''
+                "
+                >Pricing</span
+              >
+            </div>
+          </nuxt-link>
+        </li>
+        <li
+          class="nav-item"
           :class="{ active: current === 'bookmark' }"
           @click="current = 'bookmark'"
         >
@@ -127,6 +150,16 @@
         <nuxt-link to="/Contact" class="flex items-center">
           <Icon name="ic:round-contacts" class="h-6 w-6 mr-2" />
           Contact
+        </nuxt-link>
+      </li>
+      <li
+        class="mb-4"
+        :class="{ active: current === 'pricing' }"
+        @click="current = 'pricing'"
+      >
+        <nuxt-link to="/Pricing" class="flex items-center">
+          <Icon name="ic:round-monetization-on" class="h-6 w-6 mr-2" />
+          Pricing
         </nuxt-link>
       </li>
       <li

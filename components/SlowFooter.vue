@@ -7,36 +7,46 @@
             <h3 class="text-lg font-extrabold text-gray-900">About Us</h3>
             <ul class="low mt-4 space-y-4 font-light">
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Our Story</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/our-story"
+                  >Our Story</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Our Team</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/our-team"
+                  >Our Team</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Our Mission</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/our-mission"
+                  >Our Mission</NuxtLink
                 >
               </li>
             </ul>
           </div>
           <div class="col-span-2 md:col-span-1">
-            <h3 class="text-lg font-extrabold text-gray-900">Pricing</h3>
+            <NuxtLink to="/Pricing" class="text-lg font-extrabold text-gray-900"
+              >Pricing</NuxtLink
+            >
             <ul class="low mt-4 space-y-4 font-light">
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#">Basic</a>
-              </li>
-              <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Premium</a
+                <NuxtLink class="low font-light hover:underline text-blue-700" to=""
+                  >Basic</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Enterprise</a
+                <NuxtLink class="low font-light hover:underline text-blue-700" to=""
+                  >Premium</NuxtLink
+                >
+              </li>
+              <li>
+                <NuxtLink class="low font-light hover:underline text-blue-700" to=""
+                  >Enterprise</NuxtLink
                 >
               </li>
             </ul>
@@ -45,18 +55,24 @@
             <h3 class="text-lg font-extrabold text-gray-900">Terms of Use</h3>
             <ul class="low mt-4 space-y-4 font-light">
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Privacy Policy</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/privacy-policy"
+                  >Privacy Policy</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Terms &amp; Conditions</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/terms-and-conditions"
+                  >Terms &amp; Conditions</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Refund Policy</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/refund-policy"
+                  >Refund Policy</NuxtLink
                 >
               </li>
             </ul>
@@ -65,16 +81,20 @@
             <h3 class="text-lg font-extrabold text-gray-900">Contact Us</h3>
             <ul class="low mt-4 space-y-4 font-light">
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Support Center</a
+                <NuxtLink
+                  to="/support-center"
+                  class="low font-light hover:underline text-blue-700"
+                  >Support Center</NuxtLink
                 >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#">FAQs</a>
+                <NuxtLink class="low font-light hover:underline text-blue-700" to="/faqs"
+                  >FAQs</NuxtLink
+                >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Email Us</a
+                <NuxtLink class="low font-light hover:underline text-blue-700" to=""
+                  >Email Us</NuxtLink
                 >
               </li>
             </ul>
@@ -83,14 +103,22 @@
             <h3 class="text-lg font-extrabold text-gray-900">More Information</h3>
             <ul class="low mt-4 space-y-4 md:ml-4">
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#">Home</a>
+                <NuxtLink class="low font-light hover:underline text-blue-700" to="/"
+                  >Home</NuxtLink
+                >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#">Books</a>
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/Bookmarks"
+                  >Books</NuxtLink
+                >
               </li>
               <li>
-                <a class="low font-light hover:underline text-blue-700" href="#"
-                  >Images</a
+                <NuxtLink
+                  class="low font-light hover:underline text-blue-700"
+                  to="/Images"
+                  >Images</NuxtLink
                 >
               </li>
             </ul>
