@@ -7,6 +7,7 @@
     >
       <h2 class="text-xl text-gray-100 mb-4">Sign up</h2>
       <Loading v-if="auth.loading" />
+      <Loading v-if="provider.loading" />
       <form @submit.prevent="signup">
         <div class="mb-4">
           <label class="block text-gray-100 font-bold mb-2" for="email"> Email </label>
