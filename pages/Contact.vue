@@ -29,7 +29,22 @@
           </div>
 
           <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-            <form action="" class="space-y-4">
+            <form
+              action=""
+              class="space-y-4"
+              accept-charset="UTF-8"
+              @submit.prevent="onSubmit()"
+              method="POST"
+            >
+              <!-- success div with v-if=success -->
+              <div
+                v-if="success"
+                class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative"
+                role="alert"
+              >
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{ success }}</span>
+              </div>
               <div>
                 <label class="sr-only" for="name">Name</label>
                 <input
@@ -37,6 +52,7 @@
                   placeholder="Name"
                   type="text"
                   id="name"
+                  required
                 />
               </div>
 
@@ -47,6 +63,7 @@
                     class="w-full rounded-lg border-gray-400 border p-3 text-sm"
                     placeholder="Email address"
                     type="email"
+                    required
                     id="email"
                   />
                 </div>
@@ -57,6 +74,7 @@
                     class="w-full rounded-lg border-gray-400 border p-3 text-sm"
                     placeholder="Phone Number"
                     type="tel"
+                    required
                     id="phone"
                   />
                 </div>
@@ -78,7 +96,7 @@
                   type="submit"
                   class="inline-block w-full rounded-lg bg-yellow-700 px-5 py-3 font-medium text-white sm:w-auto"
                 >
-                  Send Enquiry
+                  {{ loading ? "Sending..." : "Send Enquiry" }}
                 </button>
               </div>
             </form>
@@ -90,7 +108,60 @@
 </template>
 
 <script>
-export default {};
-</script>
+export default {
+  name: "Contact",
+  data() {
+    return {
+      loading: false,
+      success: "",
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      isSuccess: false,
+    };
+  },
+  methods: {
+    onSubmit() {
+      let data = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        message: this.message,
+      };
+      this.loading = true;
+      fetch("https://getform.io/f/cabd1a3c-a6e1-44da-a47f-4be38e304729", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Success
+          this.isSuccess = true;
+          this.loading = false;
+          this.success = "Your message has been sent. Thank you!";
+          this.name = "";
+          this.phone = "";
+          this.email = "";
+          this.message = "";
 
+          setTimeout(() => {
+            this.success = "";
+            /* redirect to main */
+            this.$router.push("/Bookmarks");
+          }, 5000);
+        })
+        .catch((error) => {
+          // Error
+          console.log(error);
+          this.loading = false;
+        });
+    },
+  },
+};
+</script>
 <style scoped></style>
