@@ -26,8 +26,8 @@
         <details>
           <summary class="font-bold">How can I contact customer support?</summary>
           <p>
-            You can contact customer support by sending an email to support@example.com or
-            by filling out the contact form on our website.
+            You can contact customer support by sending an email to support@bookmark.com
+            or by filling out the contact form on our website.
           </p>
         </details>
       </li>

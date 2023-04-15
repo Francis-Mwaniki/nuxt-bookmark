@@ -85,6 +85,42 @@ export const useLoginStore = defineStore("Login-store", {
         , 4000);
         navigateTo("/Login");
       }
-    }
+    },
+    /* login with github */
+    async loginWithGithub() {
+      const client=useSupabaseAuthClient()
+      const authProvider= useSupabaseAuthClient()
+      const toastOptions = {
+        position: "top-center",
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: true,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: 'MyIconComponent',
+        rtl: true,
+      }
+      this.loading = true;
+      const { error } = await client.auth.signInWithOAuth({
+        provider: "github",
+      });
+      if (error) {
+        this.loading = false;
+        useToast().error(error.message, toastOptions);
+      }
+      if (!error) {
+        useToast().success("You have been logged in", toastOptions);
+        setTimeout(() => {
+          this.loading = false;
+        }
+        , 4000);
+        navigateTo("/Bookmarks");
+      }
+    },
+    /* login with google */
   },
 });

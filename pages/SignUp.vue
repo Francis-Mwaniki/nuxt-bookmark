@@ -57,13 +57,13 @@
       </p>
       <!-- or continue with github icon button -->
       <div class="flex justify-center mt-4">
-        <a
-          href="#"
+        <button
+          @click="auth.loginWithGithub"
           class="bg-yellow-800 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           <Icon name="uil:github" class="h-6 w-6" />
           <span class="ml-2">Continue with Github</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
