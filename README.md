@@ -8,11 +8,11 @@
  
 ## Supabase Usage
 #### I used supabase
- 1.created crud functions to:
- create,
- update,
- read,
- And delete bookmark.
+ ##### created crud functions to:
+ -create,
+ -update,
+ -read,
+ -And delete a bookmark.
  2.Use auth provider. Email and Github.
 
 ## Nuxt 3 Minimal Starter
