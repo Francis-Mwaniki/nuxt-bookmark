@@ -175,7 +175,6 @@ export default {
       showEditModal.value = true;
       /*  await store.getBookmarkById(id); */
       singleEditBookmark.value = id;
-      console.log(singleEditBookmark.value);
     }
     async function load() {
       showLoadModal.value = true;
@@ -187,7 +186,6 @@ export default {
     }
     async function Delete(id) {
       deleteId.value = id;
-      console.log(deleteId.value);
     }
 
     return {
