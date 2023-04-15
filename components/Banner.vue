@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="close">
     <div
       class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 py-2.5 px-6 sm:px-3.5 sm:before:flex-1"
     >
@@ -55,8 +55,12 @@
           >Coming Soon! <span aria-hidden="true">&rarr;</span></Nuxt-Link
         >
       </div>
-      <div class="flex flex-1 justify-end">
-        <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
+      <div class="flex flex-1 justify-end" @click="closeBanner">
+        <button
+          type="button"
+          class="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+          @click=""
+        >
           <span class="sr-only">Dismiss</span>
           <!-- Heroicon name: mini/x-mark -->
           <svg
@@ -77,7 +81,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      close: true,
+    };
+  },
+  methods: {
+    closeBanner() {
+      this.close = false;
+    },
+  },
+};
 </script>
 
 <style scoped></style>
