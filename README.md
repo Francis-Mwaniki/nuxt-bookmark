@@ -13,7 +13,7 @@
  -update,
  -read,
  -And delete a bookmark.
- 2.Use auth provider. Email and Github.
+ ##### Use auth provider. - Email and Github.
 
 ## Nuxt 3 Minimal Starter
 
