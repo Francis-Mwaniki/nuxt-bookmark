@@ -27,7 +27,7 @@ export const useLoginStore = defineStore("Login-store", {
        
       };
       this.loading = true;
-      console.log(user);
+    
       const { data, error } = await client.auth.signInWithPassword({
         email: user.email,
         password: user.password,
@@ -39,7 +39,8 @@ export const useLoginStore = defineStore("Login-store", {
         
       }
       if (data) {
-        console.log(data);
+       
+        
         useToast().success(`${data.user.email} welcome`, toastOptions);
         setTimeout(() => {
           this.loading = false;

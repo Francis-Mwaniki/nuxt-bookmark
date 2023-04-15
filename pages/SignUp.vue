@@ -87,7 +87,8 @@ export default defineComponent({
         password: password.value,
       });
       if (res) {
-        console.log(res);
+        /* 
+        console.log(res); */
       }
     };
 
