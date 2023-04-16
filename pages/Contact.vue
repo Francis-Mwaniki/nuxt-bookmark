@@ -52,6 +52,7 @@
                   placeholder="Name"
                   type="text"
                   id="name"
+                   v-model="name"
                   required
                 />
               </div>
@@ -64,6 +65,7 @@
                     placeholder="Email address"
                     type="email"
                     required
+                     v-model="email"
                     id="email"
                   />
                 </div>
@@ -75,6 +77,7 @@
                     placeholder="Phone Number"
                     type="tel"
                     required
+                     v-model="phone"
                     id="phone"
                   />
                 </div>
@@ -88,6 +91,7 @@
                   placeholder="Message"
                   rows="8"
                   id="message"
+                   v-model="message"
                 ></textarea>
               </div>
 
