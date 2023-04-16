@@ -14,6 +14,7 @@
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="email"
+            required
             v-model="email"
             placeholder="Email"
           />
@@ -26,6 +27,7 @@
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
+            required
             v-model="password"
             placeholder="Password"
           />
