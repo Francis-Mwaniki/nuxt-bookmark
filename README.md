@@ -14,7 +14,7 @@
  ###### read,
  ###### And delete a bookmark.
  #### Used auth provider. 
- ######- Email and Github.
+ ###### Email and Github.
 
 ## Nuxt 3 Minimal Starter
 
