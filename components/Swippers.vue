@@ -3,10 +3,10 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2 justify-center">
       <div v-for="(testimonial, index) in testimonials" :key="index" class="relative">
         <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transition-colors duration-500"
+          class="bg-white rounded-lg shadow-lg overflow-hidden transition-colors duration-500 md:h-full h-72"
         >
           <div class="p-4">
-            <p class="text-gray-600">{{ testimonial.content.slice(0, 60) + ".." }}</p>
+            <p class="text-gray-600">{{ testimonial.content.slice(0, 120) + ".." }}</p>
           </div>
           <div
             class="px-4 py-2 bg-[#01397A] text-sm text-gray-700 flex items-center justify-center"
