@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mt-8">
+  <div class="container md:mx-auto mx-3 mt-8">
     <h1 class="text-3xl font-bold mb-4">Our Mission</h1>
     <p class="text-gray-700 leading-relaxed">
       Our mission is to help people stay organized and save time by providing them with
