@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto my-8">
+  <div class="max-w-2xl md:mx-auto mx-3 my-8">
     <h1 class="text-3xl font-bold mb-4">Terms &amp; Conditions</h1>
     <p class="mb-4">
       Welcome to our bookmarking platform! By using our services, you agree to the
