@@ -7,13 +7,14 @@
  Francis Mwaniki (i alone)
  
 ## Supabase Usage
-#### I used supabase
+### I used supabase
  ##### created crud functions to:
  ###### create,
  ###### update,
  ###### read,
  ###### And delete a bookmark.
- ##### Used auth provider. - Email and Github.
+ #### Used auth provider. 
+ ######- Email and Github.
 
 ## Nuxt 3 Minimal Starter
 
