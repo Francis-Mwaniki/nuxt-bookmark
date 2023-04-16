@@ -56,4 +56,28 @@ export default defineNuxtConfig({
       }
     ]
   },
+ app: {
+      head: {
+        charset: "utf-16",
+        title: "Explore continent",
+        meta: [
+          { name: "description", content: "manage bookmarks" },
+        
+        ],
+        script: [
+          {
+            src: "https://accounts.google.com/gsi/client",
+            async: true,
+            defer: true,
+          },
+        ],
+        link: [
+          {
+            rel: "stylesheet",
+            href: "https://fonts.googleapis.com/css2?family=Nunito&family=Space+Mono&display=swap",
+          },
+        ],
+      },
+      pageTransition: { name: "page", mode: "out-in" },
+    },
 })
