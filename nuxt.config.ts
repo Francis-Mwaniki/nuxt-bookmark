@@ -59,7 +59,7 @@ export default defineNuxtConfig({
  app: {
       head: {
         charset: "utf-16",
-        title: "Explore continent",
+        title: "manage bookmarks",
         meta: [
           { name: "description", content: "manage bookmarks" },
         
