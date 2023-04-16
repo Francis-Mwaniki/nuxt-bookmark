@@ -20,7 +20,7 @@
           </div>
         </div>
         <div
-          class="absolute top-0 left-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-500 hover:opacity-100"
+          class="absolute bottom-0 top-0 left-0 w-full h-full rounded-lg opacity-0 transition-opacity duration-500 hover:opacity-100"
           style="background-color: rgba(255, 0, 0, 0.5); z-index: -1"
         ></div>
       </div>
