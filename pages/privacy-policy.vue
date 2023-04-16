@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto my-8 mx-auto">
+  <div class="max-w-2xl mx-auto my-8 md:mx-auto mx-3">
     <h1 class="text-3xl font-bold mb-4">Privacy Policy</h1>
     <p class="mb-4">
       At Bookmark, we take the privacy of our users seriously. This Privacy Policy
