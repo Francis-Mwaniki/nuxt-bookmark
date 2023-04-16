@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto my-8">
+  <div class="max-w-2xl md:mx-auto mx-3 my-8">
     <h1 class="text-3xl font-bold mb-4">FAQs</h1>
     <ul class="list-disc pl-4">
       <li class="mb-4 cursor-pointer list-none">
