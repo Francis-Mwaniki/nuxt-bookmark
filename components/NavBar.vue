@@ -111,7 +111,7 @@
   </div>
   <!-- mobile version -->
   <div
-    class="flex justify-start items-center bg-[#01397A] p-1 sticky inset-x-0 top-0 z-10 md:hidden py-6"
+    class="flex justify-between items-center bg-[#01397A] p-1 sticky inset-x-0 top-0 z-10 md:hidden py-6"
   >
     <Icon
       name="ic:round-menu"
@@ -135,7 +135,7 @@
         @click="isNavOpen = false"
       />
     </div>
-    <ul class="flex flex-col justify-center items-center text-gray-100 mt-8">
+    <ul class="flex flex-col justify-start items-center text-gray-100 mt-8">
       <li class="mb-4" :class="{ active: current === 'home' }" @click="current = 'home'">
         <nuxt-link to="/" class="flex items-center">
           <Icon name="ic:round-home" class="h-6 w-6 mr-2" />
