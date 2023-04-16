@@ -130,7 +130,7 @@ export default {
         message: this.message,
       };
       this.loading = true;
-      fetch("https://getform.io/f/cabd1a3c-a6e1-44da-a47f-4be38e304729", {
+      fetch("https://getform.io/f/edaf4d5b-84f4-4bc4-813a-39937b64f1f5", {
         method: "POST",
         headers: {
           Accept: "application/json",
