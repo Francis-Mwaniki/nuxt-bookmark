@@ -15,7 +15,7 @@
     </div>
 
     <div
-      class="flex flex-col md:flex-row justify-center items-center mt-8 mx-auto md:max-w-6xl max-w-lg"
+      class="flex flex-col md:flex-row justify-center items-center mt-8 md:mx-auto mx-3 md:max-w-6xl max-w-md"
     >
       <div class="w-full md:w-5/12 mb-4 md:mb-0">
         <div
