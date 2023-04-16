@@ -115,9 +115,7 @@
                 >
               </li>
               <li>
-                <NuxtLink
-                  class="low font-light hover:underline text-blue-700"
-                  to="/Images"
+                <NuxtLink class="low font-light hover:underline text-blue-700" to="/"
                   >Images</NuxtLink
                 >
               </li>
