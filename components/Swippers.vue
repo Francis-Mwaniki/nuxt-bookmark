@@ -6,7 +6,7 @@
           class="bg-white rounded-lg shadow-lg overflow-hidden transition-colors duration-500"
         >
           <div class="p-4">
-            <p class="text-gray-600">{{ testimonial.content }}</p>
+            <p class="text-gray-600">{{ testimonial.content.slice(0, 120).. }}</p>
           </div>
           <div
             class="px-4 py-2 bg-[#01397A] text-sm text-gray-700 flex items-center justify-center"

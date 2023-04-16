@@ -111,7 +111,7 @@
   </div>
   <!-- mobile version -->
   <div
-    class="flex justify-between items-center bg-[#01397A] p-1 sticky inset-x-0 top-0 z-10 md:hidden py-6"
+    class="flex justify-start items-center bg-[#01397A] p-1 sticky inset-x-0 top-0 z-10 md:hidden py-6"
   >
     <Icon
       name="ic:round-menu"

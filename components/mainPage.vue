@@ -5,7 +5,7 @@
     >
       <!-- The best bookmark site in the world -->
       <h1 class="text-4xl font-bold text-center text-blue-100 nav-font mt-5">
-        KORASRY Your Best Bookmark Manager in the World.
+        KORASRY Your Best Bookmark Manager.
       </h1>
 
       <div class="flex justify-around items-center flex-row">
