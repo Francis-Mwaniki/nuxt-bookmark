@@ -8,9 +8,7 @@
           <div class="p-4">
             <p class="text-gray-600">{{ testimonial.content.slice(0, 120) + ".." }}</p>
           </div>
-          <div
-            class="px-4 py-2 bg-[#01397A] text-sm text-gray-700 flex items-center justify-center"
-          >
+          <div class="px-4 py-2 text-sm text-gray-700 flex items-center justify-center">
             <img
               class="w-10 h-10 rounded-full mr-2"
               :src="testimonial.authorImage"
