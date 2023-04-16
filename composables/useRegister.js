@@ -36,7 +36,7 @@ export const useRegisterStore = defineStore("Register-store", {
         this.loading = false;
         useToast().error(error.message, toastOptions);
       }
-      if (data) {
+      else {
         useToast().success("User created successfully", toastOptions);
         setTimeout(() => {
           this.loading = false;
