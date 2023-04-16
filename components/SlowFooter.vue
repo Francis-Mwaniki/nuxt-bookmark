@@ -4,7 +4,7 @@
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-4 gap-8 md:grid-cols-8">
           <div class="col-span-2 md:col-span-1">
-            <h3 class=" md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
+            <h3 class="md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
               About Us
             </h3>
             <ul class="low mt-4 space-y-4 font-light">
@@ -34,7 +34,7 @@
           <div class="col-span-2 md:col-span-1">
             <NuxtLink
               to="/Pricing"
-              class=" md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm"
+              class="md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm"
               >Pricing</NuxtLink
             >
             <ul class="low mt-4 space-y-4 font-light">
@@ -62,7 +62,7 @@
             </ul>
           </div>
           <div class="col-span-2 md:col-span-1">
-            <h3 class=" md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
+            <h3 class="md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
               Terms of Use
             </h3>
             <ul class="low mt-4 space-y-4 font-light">
@@ -90,7 +90,7 @@
             </ul>
           </div>
           <div class="col-span-2 md:col-span-1">
-            <h3 class=" md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
+            <h3 class="md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
               Contact Us
             </h3>
             <ul class="low mt-4 space-y-4 font-light">
@@ -118,7 +118,7 @@
             </ul>
           </div>
           <div class="col-span-4 md:col-span-2">
-            <h3 class=" md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
+            <h3 class="md:text-lg font-extrabold text-gray-900 sm:text-sm text-sm">
               More Information
             </h3>
             <ul class="low mt-4 space-y-4 md:ml-4">
