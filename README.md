@@ -4,7 +4,7 @@
 -https://korasry.vercel.app/
 
 ## contributor
- Francis Mwaniki (i alone)
+ Francis Mwaniki (i)
  
 ## Supabase Usage
 ### I used supabase
